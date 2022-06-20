@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace May2022.Pages
 {
-    internal class HomePage
+    public class HomePage
     {
          public void GoToProfile(IWebDriver driver)
         {

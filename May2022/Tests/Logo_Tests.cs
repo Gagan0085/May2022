@@ -8,12 +8,13 @@ using System;
 namespace May2022.Tests
 {
     [TestFixture]
-    internal class Logo_Tests : CommonDriver
+    public class Logo_Tests : CommonDriver
     {
         
         [SetUp]
         public void LoginFunction()
         {
+            IWebDriver driver;
 
             // Open chrome Browser
             driver = new ChromeDriver();
@@ -21,7 +22,7 @@ namespace May2022.Tests
 
             //Login page object initialization and definition
             LoginPage loginPageobj = new LoginPage();
-            loginPageobj.loginSteps(driver);
+            
 
             //Home page object initialization and definition
             HomePage homePageobj = new HomePage();
