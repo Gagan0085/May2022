@@ -11,39 +11,29 @@ namespace May2022.Pages
 {
     public class LoginPage
     {
-        public void LoginPageNavigate()
+        public void LoginPageNavigate(IWebDriver driver)
         {
             driver.Navigate().GoToUrl("http://localhost:5000/");
             driver.Manage().Window.Maximize();
-        }
         
-          IWebDriver driver;
+         //Click Sign In
+         IWebElement SignIn = driver.FindElement(By.XPath("//*[@id='home']/div/div/div[1]/div/a"));
+         SignIn.Click();
 
-          [FindsBy(How = How.XPath, Using = "//div/div/div[1]/div/a")]
-          IWebElement signInbutton;
 
-          [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/div[1]/div/div[1]/input")]
-          IWebElement emailTextBox;
+         // Identify Username textbox and enter valid email
+         IWebElement emailTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+         emailTextbox.SendKeys("gaganbains18@gmail.com");
 
-          [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div/div/div[1]/div/div[2]/input")]
-          IWebElement passwordTextBox;
- 
-        public LoginPage(IWebDriver driver)
-        {
-            this.driver = driver;
-            PageFactory.initElements(driver, this);
-        }
+         // Identify password textbox and enter valid password
+         IWebElement passwordTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+         passwordTextbox.SendKeys("Gaganpreet1818");
 
-        public LoginPage()
-        {
-
-        }
-
-        public void signin()
-        {
-            emailTextBox.SendKeys("gaganbains18@gmail.com");
-            passwordTextBox.SendKeys("Gaganpreet1818");
-            signInbutton.Click();
+         // Click on loginn button
+         IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+         loginButton.Click();
+        
+        
         }
     }
 

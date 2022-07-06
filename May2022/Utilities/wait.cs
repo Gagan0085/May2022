@@ -16,10 +16,5 @@ namespace May2022.Utilities
             var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 2));
             wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath("")));
         }
-
-        internal static void waitByClick(IWebDriver driver, string v1, object lang, int v2)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
