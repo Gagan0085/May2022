@@ -50,7 +50,7 @@ namespace May2022.profile_pages
 
             PageFactory.InitElements(driver, this);
         }
-        public void addLanguage()
+        public void addLanguage(IWebDriver driver)
         {
 
             // Thread.Sleep(2000);

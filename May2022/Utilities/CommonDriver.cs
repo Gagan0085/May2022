@@ -12,25 +12,23 @@ namespace May2022.Utilities
 {
     public class CommonDriver
     {
-        public static IWebDriver driver;
-
-        [OneTimeSetUp]
-        public void Loginfunction()
-        {
+            public static IWebDriver driver;
+            [OneTimeSetUp]
+            public void SignInfunction()
             {
                 // open chrome browser
                 driver = new ChromeDriver();
-                driver.Navigate().GoToUrl("http://localhost:5000/");
                 driver.Manage().Window.Maximize();
-
-                //Loginpage object initilization and definition
-                HomePage HomePageobj = new HomePage(driver);
-                HomePageobj.Signin(driver);
-                LoginPage Loginpageobj = new LoginPage(driver);
-                Loginpageobj.addlogindetail(driver);
-                Loginpageobj.login(driver);
+                //LoginPage object initilization and definition
+                LoginPage LoginPageobj = new LoginPage(driver);
+                LoginPageobj.addlogindetail(driver);
             }
-        }
+            [OneTimeTearDown]
+            public void CloseTestRun()
+            {
+                driver.Quit();
+            }
+     }
+ }
 
-    }
-}
+
