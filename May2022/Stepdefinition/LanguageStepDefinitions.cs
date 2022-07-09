@@ -37,10 +37,10 @@ namespace May2022
         public void ThenNewLanguageRecordShouldBeCreatedSuccessfully()
         {
             ManageLanguage manageLanguageobj = new ManageLanguage(driver);
-            Assert.IsTrue(manageLanguageobj.addLanguage().Contains("English"));
+            Assert.IsTrue(manageLanguageobj.addLanguage(driver).Contains("English"));
         }
 
-        [Then(@"Close the Browser")]
+        [Then(@"Close the Browser")] 
         public void ThenCloseTheBrowser()
         {
             driver.Quit();
@@ -57,7 +57,7 @@ namespace May2022
         public void ThenNewEditedLanguageRecordShouldBeEditedSuccessfully()
         {
             ManageLanguage manageLanguageobj = new ManageLanguage(driver);
-            Assert.IsTrue(manageLanguageobj.editLanguage().Contains("EditedLanguage"));
+            Assert.IsTrue(manageLanguageobj.editLanguage(driver).Contains("EditedLanguage"));
         }
 
         [When(@"I delete a New language Record")]
