@@ -11,9 +11,10 @@ namespace May2022
     [Binding]
     public class DescriptionFeature1StepDefinitions : CommonDriver
     {
-        [Given(@"I logged in to localhost  sucessfully")]
-        public void GivenILoggedInToLocalhostSucessfully()
+        [Given(@"I logged in  localhost  sucessfully")]
+        public void GivenILoggedInLocalhostSucessfully()
         {
+
             // open chrome browser
             driver = new ChromeDriver();
             driver.Navigate().GoToUrl("http://localhost:5000/");
@@ -37,11 +38,8 @@ namespace May2022
             Managedescription managedescriptionobj = new Managedescription(driver);
             Assert.IsTrue(managedescriptionobj.GetDescription().Contains("Hi Good day"));
         }
-        [Then(@"Close the Browser")]
-        public void ThenCloseTheBrowser()
-        {
-            driver.Quit();
-        }
+
+
         [When(@"I edit a New description Record")]
         public void WhenIEditANewDescriptionRecord()
         {

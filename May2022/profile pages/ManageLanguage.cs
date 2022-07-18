@@ -32,11 +32,17 @@ namespace May2022.profile_pages
         [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]")]
         public IWebElement addButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[1]/i")]
+        [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[3]/span[1]/i")]
         public IWebElement editButton { get; set; }
 
-        [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td/div/div[1]/input")]
+        [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[1]/input")]
         public IWebElement editedLanguagetextbox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/div[2]/select")]
+        public IWebElement lvlTextBox { get; set; }
+
+        [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td/div/span/input[1]")]
+        public IWebElement updateButton { get; set; }
 
         [FindsBy(How = How.XPath, Using = "//div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[last()]/tr/td[3]/span[2]/i")]
         public IWebElement deleteButton { get; set; }
@@ -54,14 +60,9 @@ namespace May2022.profile_pages
         {
 
             // Thread.Sleep(2000);
-
-            IWebElement language = driver.FindElement(By.XPath("//div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
             language.Click();
-
             addNewButton.Click();
-
             textBox.Click();
-
             textBox.SendKeys("English");
             dropDown.Click();
             dropDownSelect.SendKeys("Conversational");
@@ -70,24 +71,28 @@ namespace May2022.profile_pages
         }
         public void editLanguage(IWebDriver driver)
         {
-            //This is textbox here
-            editedLanguagetextbox.Click();
+           
             editButton.Click();
             editedLanguagetextbox.Clear();
             editedLanguagetextbox.SendKeys("EditedLanguage");
-            addButton.Click();
+            updateButton.Click();
         }
 
         public void deleteLanguage(IWebDriver driver)
         {
+            Thread.Sleep(2000);
+            wait.waitByClick(driver, "xPath", deleteButton, 2);
             deleteButton.Click();
+
         }
 
-        public string getLastLanguage()
+        public string getlastLanguage()
         {
+
             //Thread.Sleep(2000);
             wait.waitByClick(driver, "xPath", language, 2);
             return language.Text;
+
         }
     }
 }
